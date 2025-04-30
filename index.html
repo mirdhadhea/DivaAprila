@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Happy Birthday</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #a60874;
+            font-family: 'Rubik', sans-serif;
+            color: white;
+            text-align: center;
+            padding: 40px;
+        }
+
+        input {
+            margin: 10px 0;
+            padding: 8px;
+            width: 60%;
+            max-width: 300px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        button {
+            margin-top: 15px;
+            padding: 8px 20px;
+            border: none;
+            background: white;
+            color: #a60874;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            background: white;
+            padding: 15px;
+            border: 1px solid black;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            font-family: 'Rubik', sans-serif;
+            color: black;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .modal-footer {
+            text-align: right;
+            margin-top: 10px;
+        }
+
+        .modal-footer button {
+            padding: 5px 15px;
+            border: 1px solid blue;
+            background: white;
+            cursor: pointer;
+        }
+        .foto-diva {
+            width: 150px;
+            height: auto;
+            object-fit: cover;
+            border: 3px solid white;
+            margin: 0 auto 20px auto;
+            display: block;
+        }
+        </style>
+</head>
+<body>
+    <h1>Hai, Diva Aprila!</h1>
+    <p>It's been a long time since we've been together. Do you still remember things about me? <br> Please answer some questions about me below ^^</p>
+    <img src="diva.jpg" alt="Foto Diva" class="foto-diva">
+    
+    <div>
+        <input id="nama-panjang" placeholder="Nama Panjang"><br>
+        <input id="nama-panggilan" placeholder="Nama Panggilan"><br>
+        <input type="date" id="tanggal"><br>
+        <button onclick="validasi()">Input</button>
+    </div>
+
+    <div class="modal" id="modal">
+        <div class="modal-header">JavaScript Alert <span class="close" onclick="tutupModal()">&times;</span></div>
+        <p id="modal-text"></p>
+        <div class="modal-footer"><button onclick="tutupModal()">OK</button></div>
+    </div>
+
+    <script>
+        function validasi() {
+            const namaPanjang = document.getElementById("nama-panjang").value.trim();
+            const namaPanggilan = document.getElementById("nama-panggilan").value.trim();
+            const tanggalLahir = document.getElementById("tanggal").value;
+            let pesan = "";
+
+            if (!namaPanjang) {
+                pesan = "Isikan nama panjang!";
+            } else if (!namaPanggilan) {
+                pesan = "Isikan nama panggilan!";
+            } else if (!tanggalLahir) {
+                pesan = "Tanggal Lahir harus diisi!";
+            } else if (tanggalLahir !== "2005-06-16") {
+                pesan = "Tanggal Lahir salah. Coba ingat-ingat lagi!";
+            } else {
+                pesan = `Halo, Diva! Selamat ulang tahun ya. Maaf kalau aku baru ngucapin di H+4, sebenarnya aku sengaja sih biar kau sedih dulu HEHE. Maaf ya, kalau semisal selama ini aku sering cuek ke kau, sering gak dengerin kau cerita, atau bahkan slowresp saat balas chat kau. JUJUR ... aku tuh udah baca dan balas di dalam hati tapi sering kelupaan untuk ngebalas beneran. Maksud aku sengaja ngucapin kau telat adalah aku mau ngingetin ke kau kalau gak akan ada orang yang selalu ada untuk kau. Satu-satunya orang yang selalu ada untuk kau adalah diri kau sendiri. Jadi, harapan aku di umur kau yang sekarang kau dapat lebih mencintai diri kau sendiri dan memaafkan apapun yang terjadi pada kau. Tapi, kau harus tau bahwa aku dan teman-teman kau lainnya akan terus mendukung kau dan mendoakan kaau. PLS cerita-cerita ke aku lagi dong? Bakal aku respons walau mungkin gak langsung ... HEHE maaf ya, Div. Semoga kebahagiaan senantiasa melimpahimu! <3`;
+            }
+
+            tampilkanModal(pesan);
+        }
+
+        function tampilkanModal(pesan) {
+            document.getElementById("modal-text").innerText = pesan;
+            document.getElementById("modal").style.display = "block";
+        }
+
+        function tutupModal() {
+            document.getElementById("modal").style.display = "none";
+        }
+    </script>
+</body>
+</html>
